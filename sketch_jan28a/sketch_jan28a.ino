@@ -18,17 +18,22 @@ dht.begin();
 }
 
 void loop() {
-double var1 = dht.readTemperature();
-double var2 = dht.readHumidity();
+float var1 = dht.readTemperature();
+float var2 = dht.readHumidity();
+int frequency = 10000;
 //Coversions
-double var1F = var1 * 9/5 +32;
-double var2F = var2 * 9/5 +32;
+//double var1F = var1 * 9/5 +32;
   // put your main code here, to run repeatedly:
 u8x8.setFont(u8x8_font_chroma48medium8_r);
 u8x8.setCursor(0, 0);
 //u8x8.print("Hello World!");
 u8x8.println("Temp:");
-u8x8.println(var1F);
+u8x8.println(var1);
 u8x8.println("Humidity:");
-u8x8.println(var2F);
+u8x8.println(var2);
+
+if (var2 > 70){
+tone(5, frequency, 1000);
+}
+
 }
